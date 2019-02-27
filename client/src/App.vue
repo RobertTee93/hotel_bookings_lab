@@ -26,6 +26,12 @@ export default {
     },
     addBooking(booking){
       this.bookings.push(booking);
+    },
+    deleteBooking(id){
+      const index = this.bookings.findIndex((booking) => {
+        return booking._id === id;
+      })
+      this.bookings.splice(index, 1);
     }
   },
   mounted(){
@@ -34,6 +40,10 @@ export default {
     eventBus.$on("booking-added", (booking) => {
       this.addBooking(booking)
     });
+
+    eventBus.$on("booking-deleted", (bookingId) => {
+      this.deleteBooking(bookingId)
+    })
 
   },
   components: {
