@@ -4,8 +4,7 @@
       <p>Name: {{ booking.name }}</p>
       <p>Email: {{ booking.email }}</p>
       <label>Checked in:</label>
-      <input v-if="booking.checkedIn" type="checkbox" value="true" checked>
-      <input v-if="!booking.checkedIn" type="checkbox" value="true">
+      <input type="checkbox" v-model="booking.checkedIn">
       <button v-on:click="deleteBooking(booking._id)">Delete Booking</button>
     </div>
   </div>
