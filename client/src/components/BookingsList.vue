@@ -16,6 +16,9 @@ export default {
   name: "BookingsList",
   props: ["bookings"],
   methods: {
+    deleteBooking(){
+      
+    }
   }
 }
 </script>
