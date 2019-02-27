@@ -2,7 +2,7 @@
 
   <div>
     <NewBookingsForm></NewBookingsForm>
-    <BookingsList></BookingsList>
+    <BookingsList :bookings="bookings"></BookingsList>
   </div>
 
 </template>
@@ -19,9 +19,14 @@ export default {
     }
   },
   methods: {
-
+    fetchData(){
+      fetch("http://localhost:3000/api/bookings")
+      .then(response => response.json())
+      .then(bookings => this.bookings = bookings)
+    }
   },
   mounted(){
+    this.fetchData()
 
   },
   components: {
