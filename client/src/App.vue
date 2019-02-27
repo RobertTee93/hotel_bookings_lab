@@ -23,10 +23,17 @@ export default {
       fetch("http://localhost:3000/api/bookings")
       .then(response => response.json())
       .then(bookings => this.bookings = bookings)
+    },
+    addBooking(booking){
+      this.bookings.push(booking);
     }
   },
   mounted(){
     this.fetchData()
+
+    eventBus.$on("booking-added", (booking) => {
+      this.addBooking(booking)
+    });
 
   },
   components: {
